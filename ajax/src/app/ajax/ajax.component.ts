@@ -20,18 +20,14 @@ export class AjaxComponent implements OnInit {
   public loginStatus: string;
   public email: string;
 
-
-   onClickSubmit(mi : any): void {
-
-      // email = data.emailid;
-       this.httpService.sendGetRequest('/random/' + mi.emailid).subscribe((data) => {
+  onClickSubmit(mi : any): void {
+    // email = data.emailid;
+     this.httpService.sendGetRequest('/random/' + mi.emailid).subscribe((data) => {
 
       /*
        * This quickly gets tedious.
        * Use external libraries.
        */
-
-
       interface RandomObj {
         msg: string;
       }
@@ -39,5 +35,5 @@ export class AjaxComponent implements OnInit {
       let obj: RandomObj = JSON.parse(JSON.stringify(data));
       this.loginStatus = obj.msg;
     })
-   }
+  }
 }
