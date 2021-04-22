@@ -12,15 +12,20 @@ export class AjaxComponent implements OnInit {
   public loginStatus: string;
   public email: string;
   public theHtmlString: string;
+  public rcode: string;
+  public num: string;
 
   constructor(private httpService: HttpService) {
     this.loginStatus = "";
     this.email = "";
     this.theHtmlString = "";
+    this.rcode = "";
+    this.num = "";
   }
 
   ngOnInit(): void {
-    this.httpService.sendGetRequest('/random2').subscribe((data) => {
+    this.num = "8";
+    this.httpService.sendGetRequest('/random2/' + this.num).subscribe((data) => {
 
       interface RandomObj2 {
         msg: string;
@@ -29,6 +34,7 @@ export class AjaxComponent implements OnInit {
       let obj: RandomObj2 = JSON.parse(JSON.stringify(data));
       this.theHtmlString = obj.msg;
     })
+    this.rcode = this.makeid(8);
   }
 
   onClickSubmit(mi : any): void {
@@ -53,6 +59,12 @@ export class AjaxComponent implements OnInit {
        // Property 'theHtmlString' has no initializer and is not definitely assigned in the constructor.
        // https://stackoverflow.com/questions/49699067/property-has-no-initializer-and-is-not-definitely-assigned-in-the-construc
 
+       // send parameter from typescript to node
+       // https://stackoverflow.com/questions/44280303/angular-http-get-with-parameter
+
+       // query string
+       // https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
+       // https://stackoverflow.com/questions/17007997/how-to-access-the-get-parameters-after-in-express
       interface RandomObj {
         msg: string;
       }
@@ -61,4 +73,16 @@ export class AjaxComponent implements OnInit {
       this.loginStatus = obj.msg;
     })
   }
+
+  makeid(length: number): string {
+    let result: string[] = [];
+    let characters: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!&%$#@*^';
+    let charactersLength: number = characters.length;
+    for (let i: number = 0; i < length; i++) {
+        result.push(characters.charAt(Math.floor(Math.random() *
+            charactersLength)));
+    }
+    return result.join('');
+  }
+
 }
