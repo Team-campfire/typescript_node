@@ -97,17 +97,13 @@ class AjaxComponent {
     onClickSubmit(mi) {
         // email = data.emailid;
         this.httpService.sendGetRequest('/random/' + mi.emailid).subscribe((data) => {
-            /*
-             * This quickly gets tedious.
-             * Use external libraries.
-             */
             let obj = JSON.parse(JSON.stringify(data));
             this.loginStatus = obj.msg;
         });
     }
 }
 AjaxComponent.ɵfac = function AjaxComponent_Factory(t) { return new (t || AjaxComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_http_service__WEBPACK_IMPORTED_MODULE_1__["HttpService"])); };
-AjaxComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AjaxComponent, selectors: [["app-ajax"]], decls: 9, vars: 1, consts: [[3, "ngSubmit"], ["userlogin", "ngForm"], ["type", "text", "name", "emailid", "placeholder", "emailid", "ngModel", ""], ["type", "password", "name", "passwd", "placeholder", "passwd", "ngModel", ""], ["type", "submit", "value", "submit"]], template: function AjaxComponent_Template(rf, ctx) { if (rf & 1) {
+AjaxComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AjaxComponent, selectors: [["app-ajax"]], decls: 11, vars: 1, consts: [[3, "ngSubmit"], ["userlogin", "ngForm"], ["type", "text", "name", "emailid", "placeholder", "emailid", "ngModel", ""], ["type", "password", "name", "passwd", "placeholder", "passwd", "ngModel", ""], ["type", "submit", "value", "submit"], ["id", "hello"]], template: function AjaxComponent_Template(rf, ctx) { if (rf & 1) {
         const _r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "form", 0, 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngSubmit", function AjaxComponent_Template_form_ngSubmit_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r1); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](1); return ctx.onClickSubmit(_r0.value); });
@@ -117,11 +113,14 @@ AjaxComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "br");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "input", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "p");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "p", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Hello world");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.loginStatus, " ");
     } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["ɵangular_packages_forms_forms_ba"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgForm"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgModel"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhamF4LmNvbXBvbmVudC5jc3MifQ== */"] });
 

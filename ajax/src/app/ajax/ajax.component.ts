@@ -22,8 +22,9 @@ export class AjaxComponent implements OnInit {
 
   onClickSubmit(mi : any): void {
     // email = data.emailid;
-     this.httpService.sendGetRequest('/random/' + mi.emailid).subscribe((data) => {
-
+    this.httpService.sendGetRequest('/random/' + mi.emailid).subscribe((data) => {
+      // https://angular.io/guide/observables
+      // https://stackoverflow.com/questions/44921788/what-is-subscribe-in-angular/51935993
       /*
        * This quickly gets tedious.
        * Use external libraries.
