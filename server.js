@@ -51,6 +51,10 @@ app.get('/random/:emailid', (req, res) => {
   }
 });
 
+app.get('/random2', (req, res) => {
+	res.json({msg: "Hello World2"});
+});
+
 app.listen(port, () => {
   console.log('Listening on *:3000');
 });
