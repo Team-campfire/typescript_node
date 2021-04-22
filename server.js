@@ -51,7 +51,8 @@ app.get('/random/:emailid', (req, res) => {
   }
 });
 
-app.get('/random2', (req, res) => {
+app.get('/random2:num', (req, res) => {
+	console.log(req.params.num);
 	res.json({msg: "Hello World2"});
 });
 
