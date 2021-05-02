@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-ajax',
@@ -7,7 +9,82 @@ import { HttpService } from '../http.service';
   styleUrls: ['./ajax.component.css']
 })
 
+
 export class AjaxComponent implements OnInit {
+
+  // single element
+
+  // name = new FormControl('');
+
+  // updateName() {
+  //   this.name.setValue('Nancy');
+  // }
+
+  // form group
+  // profileForm = new FormGroup({
+  //   firstName: new FormControl(''),
+  //   lastName: new FormControl(''),
+  // });
+
+  onSubmit() {
+    // TODO: Use EventEmitter with form value
+    console.warn(this.profileForm.value);
+  }
+
+  // nested form group
+  // profileForm = new FormGroup({
+  //   firstName: new FormControl(''),
+  //   lastName: new FormControl(''),
+  //   address: new FormGroup({
+  //     street: new FormControl(''),
+  //     city: new FormControl(''),
+  //     state: new FormControl(''),
+  //     zip: new FormControl('')
+  //   })
+  // });
+
+  // nested update
+  updateProfile() {
+    this.profileForm.patchValue({
+      firstName: 'Nancy',
+      address: {
+        street: '123 Drew Street'
+      }
+    });
+  }
+
+  // form builder
+
+  profileForm = this.fb.group({
+    firstName: ['', Validators.required],
+    lastName: [''],
+    address: this.fb.group({
+      street: [''],
+      city: [''],
+      state: [''],
+      zip: ['']
+    }),
+    colors: this.fb.group({
+      color: ['']
+    }),
+    // aliases
+    aliases: this.fb.array([
+      this.fb.control('')
+    ])
+  });
+
+  get aliases() {
+    return this.profileForm.get('aliases') as FormArray;
+  }
+
+  addAlias() {
+    this.aliases.push(this.fb.control(''));
+  }
+
+  // src:
+  // https://angular.io/guide/reactive-forms
+  // https://v2.angular.io/docs/ts/latest/guide/reactive-forms.html
+  // https://www.elite-corner.com/2018/11/angular-json-pipe-example.html
 
   public loginStatus: string;
   public email: string;
@@ -15,7 +92,9 @@ export class AjaxComponent implements OnInit {
   public rcode: string;
   public num: string;
 
-  constructor(private httpService: HttpService) {
+  // constructor() { }
+
+  constructor(private httpService: HttpService, private fb: FormBuilder) {
     this.loginStatus = "";
     this.email = "";
     this.theHtmlString = "";
@@ -25,6 +104,8 @@ export class AjaxComponent implements OnInit {
 
   ngOnInit(): void {
     this.num = "8";
+    alert(this.num);
+
     this.httpService.sendGetRequest('/random2/' + this.num).subscribe((data) => {
 
       interface RandomObj2 {
