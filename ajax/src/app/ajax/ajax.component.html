@@ -48,11 +48,11 @@
 
 
 <!-- nested form group -->
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit(profileForm.value)">
 
   <label>
     First Name:
-    <input type="text" formControlName="firstName" required>
+    <input type="text" formControlName="firstName">
   </label>
 
   <label>

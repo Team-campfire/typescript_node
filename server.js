@@ -44,11 +44,22 @@ app.get('/', (req, res) => {
 // });
 
 app.get('/random/:emailid', (req, res) => {
+	console.log(req.body);
   if(req.params.emailid == "kokkam") {
       res.json({ msg: "authentication success" });
   } else {
     res.json({msg: "authentication failed"});
   }
+});
+
+app.get('/submitCategories', (req, res) => {
+	console.log("egg");
+	// console.log(req.body);
+  // if(req.params.emailid == "kokkam") {
+  //     res.json({ msg: "authentication success" });
+  // } else {
+  //   res.json({msg: "authentication failed"});
+  // }
 });
 
 app.get('/random2:num', (req, res) => {

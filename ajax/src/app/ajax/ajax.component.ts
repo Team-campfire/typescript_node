@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
+import { HttpClient} from '@angular/common/http';
 import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -26,9 +27,38 @@ export class AjaxComponent implements OnInit {
   //   lastName: new FormControl(''),
   // });
 
-  onSubmit() {
+  // onSubmit(mi : any): void {
+  //   // TODO: Use EventEmitter with form value
+  //   console.warn(this.profileForm.value);
+  // }
+
+  // onClickSubmit(mi : any): void {
+  //   this.http.post<any>('/submitCategories', {
+  //     eventCategory:  this.eventCategory,
+  //     eventDescription:  mi.eventDescription,
+  //     clubCategory: this.clubCategory,
+  //     clubDescription:  mi.clubDescription
+  //   })
+  //   .subscribe((data)  => { console.log(data); }, (err) => {
+  //     console.log("Error", err);
+  //   });
+  // }
+
+  onSubmit(mi: any) {
     // TODO: Use EventEmitter with form value
-    console.warn(this.profileForm.value);
+    alert(this.profileForm.value.firstName);
+    // alert(mi.value);
+    // alert(this.profileForm.firstName.value);
+    // console.warn(this.profileForm.value);
+    this.fname = this.profileForm.value.firstName;
+    this.http.get<any>('/submitCategories', {
+      // email:  this.profileForm.value.firstName
+
+      fname: this.fname
+    })
+    .subscribe((data)  => { console.log(data); }, (err) => {
+      console.log("Error", err);
+    });
   }
 
   // nested form group
@@ -49,6 +79,9 @@ export class AjaxComponent implements OnInit {
       firstName: 'Nancy',
       address: {
         street: '123 Drew Street'
+      },
+      colors: {
+        color: 'green'
       }
     });
   }
@@ -85,42 +118,64 @@ export class AjaxComponent implements OnInit {
   // https://angular.io/guide/reactive-forms
   // https://v2.angular.io/docs/ts/latest/guide/reactive-forms.html
   // https://www.elite-corner.com/2018/11/angular-json-pipe-example.html
+  // https://stackoverflow.com/questions/43713558/how-to-get-a-single-value-from-formgroup
+
+  // https://stackoverflow.com/questions/44602420/angular2-4-populate-form-after-request
+  // https://angular.io/api/forms/FormGroup
+  // https://stackoverflow.com/questions/49078286/angular-5-reactive-forms-radio-button-group/49078441
+  // https://stackoverflow.com/questions/40647073/angular-2-accessing-data-from-formarray
+  // https://www.w3schools.com/jsref/met_console_warn.asp
+  // https://www.pluralsight.com/guides/how-to-submit-form-data-using-angular
 
   public loginStatus: string;
   public email: string;
   public theHtmlString: string;
   public rcode: string;
   public num: string;
+  public fname: string;
 
   // constructor() { }
 
-  constructor(private httpService: HttpService, private fb: FormBuilder) {
+  constructor(private http: HttpClient, private fb: FormBuilder) {
     this.loginStatus = "";
     this.email = "";
     this.theHtmlString = "";
     this.rcode = "";
     this.num = "";
+    this.fname = "";
   }
 
   ngOnInit(): void {
-    this.num = "8";
-    alert(this.num);
-
-    this.httpService.sendGetRequest('/random2/' + this.num).subscribe((data) => {
-
-      interface RandomObj2 {
-        msg: string;
-      }
-
-      let obj: RandomObj2 = JSON.parse(JSON.stringify(data));
-      this.theHtmlString = obj.msg;
-    })
-    this.rcode = this.makeid(8);
+    // this.num = "8";
+    // alert(this.num);
+    //
+    // this.httpService.sendGetRequest('/random2/' + this.num).subscribe((data) => {
+    //
+    //   interface RandomObj2 {
+    //     msg: string;
+    //   }
+    //
+    //   let obj: RandomObj2 = JSON.parse(JSON.stringify(data));
+    //   this.theHtmlString = obj.msg;
+    // })
+    // this.rcode = this.makeid(8);
   }
+
+  // onClickSubmit(mi : any): void {
+  //   this.http.post<any>('/submitCategories', {
+  //     eventCategory:  this.eventCategory,
+  //     eventDescription:  mi.eventDescription,
+  //     clubCategory: this.clubCategory,
+  //     clubDescription:  mi.clubDescription
+  //   })
+  //   .subscribe((data)  => { console.log(data); }, (err) => {
+  //     console.log("Error", err);
+  //   });
+  // }
 
   onClickSubmit(mi : any): void {
     // email = data.emailid;
-    this.httpService.sendGetRequest('/random/' + mi.emailid).subscribe((data) => {
+    this.http.get<any>('/random/' + mi.emailid).subscribe((data) => {
       // https://angular.io/guide/observables
       // https://stackoverflow.com/questions/44921788/what-is-subscribe-in-angular/51935993
       // https://luukgruijs.medium.com/understanding-creating-and-subscribing-to-observables-in-angular-426dbf0b04a3
