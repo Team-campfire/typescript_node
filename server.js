@@ -3,14 +3,16 @@ const app = express();
 const port = 3000;
 const path = require('path');
 const https = require('https');
+var bodyParser = require('body-parser');
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, './ajax/dist/ajax')));
 
 // const express = require('express')
 // const app = express()
 // const fetch = require('node-fetch');
-var bodyParser = require('body-parser');
+
 // var cors = require('cors')
 // var mongoose = require('mongoose')
 // const stream = require('stream')
