@@ -5,9 +5,19 @@ const path = require('path');
 const https = require('https');
 var bodyParser = require('body-parser');
 
+var multer = require('multer');
+var upload = multer();
+
+app.use(express.static(path.join(__dirname, './ajax/dist/ajax')));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, './ajax/dist/ajax')));
+
+app.use(upload.array());
+app.use(express.static('public'));
+
+// app.use(upload.array());
+// app.use(express.static('public'));
 
 // const express = require('express')
 // const app = express()

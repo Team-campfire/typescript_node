@@ -129,12 +129,13 @@ class AjaxComponent {
     onSubmit() {
         // TODO: Use EventEmitter with form value
         // alert(this.profileForm.value.firstName);
-        alert(this.profileForm.get('firstName').value);
+        // alert(this.profileForm.get('firstName')!.value);
         // alert(this.profileForm.firstName.value);
         // console.warn(this.profileForm.value);
         let formData = new FormData();
         this.fname = this.profileForm.value.firstName;
         formData.append("name", this.profileForm.get('firstName').value);
+        alert(formData.getAll('name'));
         this.http.get('/submitCategories', formData
         // email:  this.profileForm.value.firstName
         // fname: this.fname

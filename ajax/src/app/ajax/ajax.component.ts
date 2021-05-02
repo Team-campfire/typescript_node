@@ -47,13 +47,14 @@ export class AjaxComponent implements OnInit {
   onSubmit() {
     // TODO: Use EventEmitter with form value
     // alert(this.profileForm.value.firstName);
-    alert(this.profileForm.get('firstName')!.value);
+    // alert(this.profileForm.get('firstName')!.value);
     // alert(this.profileForm.firstName.value);
     // console.warn(this.profileForm.value);
 
     let formData: any = new FormData();
     this.fname = this.profileForm.value.firstName;
     formData.append("name", this.profileForm.get('firstName')!.value);
+    alert(formData.getAll('name'));
 
     this.http.get<any>('/submitCategories', formData
       // email:  this.profileForm.value.firstName
@@ -136,6 +137,10 @@ export class AjaxComponent implements OnInit {
   // https://www.pluralsight.com/guides/how-to-submit-form-data-using-angular
   // https://stackoverflow.com/questions/43800907/typescript-strictnullchecks-object-is-possibly-null
   // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#non-null-assertion-operator
+
+  // https://developer.mozilla.org/en-US/docs/Web/API/FormData/getAll
+  // https://www.tutorialspoint.com/expressjs/expressjs_form_data.htm
+  // https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
 
   public loginStatus: string;
   public email: string;
