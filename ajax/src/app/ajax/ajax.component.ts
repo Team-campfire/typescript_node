@@ -34,28 +34,36 @@ export class AjaxComponent implements OnInit {
 
   // onClickSubmit(mi : any): void {
   //   this.http.post<any>('/submitCategories', {
-  //     eventCategory:  this.eventCategory,
-  //     eventDescription:  mi.eventDescription,
-  //     clubCategory: this.clubCategory,
-  //     clubDescription:  mi.clubDescription
+      // eventCategory:  this.eventCategory,
+      // eventDescription:  mi.eventDescription,
+      // clubCategory: this.clubCategory,
+      // clubDescription:  mi.clubDescription
   //   })
   //   .subscribe((data)  => { console.log(data); }, (err) => {
   //     console.log("Error", err);
   //   });
   // }
 
-  onSubmit(mi: any) {
+  onSubmit() {
     // TODO: Use EventEmitter with form value
-    alert(this.profileForm.value.firstName);
-    // alert(mi.value);
+    // alert(this.profileForm.value.firstName);
+    alert(this.profileForm.get('firstName')!.value);
     // alert(this.profileForm.firstName.value);
     // console.warn(this.profileForm.value);
+
+    let formData: any = new FormData();
     this.fname = this.profileForm.value.firstName;
-    this.http.get<any>('/submitCategories', {
+    formData.append("name", this.profileForm.get('firstName')!.value);
+
+    this.http.get<any>('/submitCategories', formData
       // email:  this.profileForm.value.firstName
 
-      fname: this.fname
-    })
+      // fname: this.fname
+      // eventCategory:  this.eventCategory,
+      // eventDescription:  mi.eventDescription,
+      // clubCategory: this.clubCategory,
+      // clubDescription:  mi.clubDescription
+    )
     .subscribe((data)  => { console.log(data); }, (err) => {
       console.log("Error", err);
     });
@@ -126,6 +134,8 @@ export class AjaxComponent implements OnInit {
   // https://stackoverflow.com/questions/40647073/angular-2-accessing-data-from-formarray
   // https://www.w3schools.com/jsref/met_console_warn.asp
   // https://www.pluralsight.com/guides/how-to-submit-form-data-using-angular
+  // https://stackoverflow.com/questions/43800907/typescript-strictnullchecks-object-is-possibly-null
+  // https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#non-null-assertion-operator
 
   public loginStatus: string;
   public email: string;

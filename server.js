@@ -4,12 +4,13 @@ const port = 3000;
 const path = require('path');
 const https = require('https');
 
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, './ajax/dist/ajax')));
 
 // const express = require('express')
 // const app = express()
 // const fetch = require('node-fetch');
-// var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 // var cors = require('cors')
 // var mongoose = require('mongoose')
 // const stream = require('stream')
@@ -53,8 +54,8 @@ app.get('/random/:emailid', (req, res) => {
 });
 
 app.get('/submitCategories', (req, res) => {
-	console.log("egg");
-	// console.log(req.body);
+	console.log("egg\n");
+	console.log(req.body);
   // if(req.params.emailid == "kokkam") {
   //     res.json({ msg: "authentication success" });
   // } else {
