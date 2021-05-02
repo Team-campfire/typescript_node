@@ -65,7 +65,7 @@ app.get('/random/:emailid', (req, res) => {
   }
 });
 
-app.get('/submitCategories', (req, res) => {
+app.post('/submitCategories', (req, res) => {
 	console.log("egg\n");
 	console.log(req.body);
   // if(req.params.emailid == "kokkam") {

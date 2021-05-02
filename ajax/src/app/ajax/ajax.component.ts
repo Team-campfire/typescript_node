@@ -56,15 +56,16 @@ export class AjaxComponent implements OnInit {
     formData.append("name", this.profileForm.get('firstName')!.value);
     alert(formData.getAll('name'));
 
-    this.http.get<any>('/submitCategories', formData
-      // email:  this.profileForm.value.firstName
+    this.http.post<any>('/submitCategories', {
+
+      email:  this.profileForm.value.firstName
 
       // fname: this.fname
       // eventCategory:  this.eventCategory,
       // eventDescription:  mi.eventDescription,
       // clubCategory: this.clubCategory,
       // clubDescription:  mi.clubDescription
-    )
+    })
     .subscribe((data)  => { console.log(data); }, (err) => {
       console.log("Error", err);
     });

@@ -136,14 +136,14 @@ class AjaxComponent {
         this.fname = this.profileForm.value.firstName;
         formData.append("name", this.profileForm.get('firstName').value);
         alert(formData.getAll('name'));
-        this.http.get('/submitCategories', formData
-        // email:  this.profileForm.value.firstName
-        // fname: this.fname
-        // eventCategory:  this.eventCategory,
-        // eventDescription:  mi.eventDescription,
-        // clubCategory: this.clubCategory,
-        // clubDescription:  mi.clubDescription
-        )
+        this.http.post('/submitCategories', {
+            email: this.profileForm.value.firstName
+            // fname: this.fname
+            // eventCategory:  this.eventCategory,
+            // eventDescription:  mi.eventDescription,
+            // clubCategory: this.clubCategory,
+            // clubDescription:  mi.clubDescription
+        })
             .subscribe((data) => { console.log(data); }, (err) => {
             console.log("Error", err);
         });
