@@ -125,6 +125,23 @@ export class AjaxComponent implements OnInit {
     this.aliases.push(this.fb.control(''));
   }
 
+
+
+  catgeoryForm = this.fb.group({
+    eventDescription: [''],
+    clubDescription: [''],
+    eventCategories: this.fb.group({
+      eventCategory: ['']
+    }),
+    clubCategories: this.fb.group({
+      clubCategory: ['']
+    })
+    // aliases
+    // aliases: this.fb.array([
+    //   this.fb.control('')
+    // ])
+  });
+
   // src:
   // https://angular.io/guide/reactive-forms
   // https://v2.angular.io/docs/ts/latest/guide/reactive-forms.html
@@ -147,6 +164,9 @@ export class AjaxComponent implements OnInit {
   // https://angular.io/tutorial/toh-pt6
   // https://stackoverflow.com/questions/34475523/how-to-pass-url-arguments-query-string-to-a-http-request-on-angular
   // https://angular.io/guide/http#setup-for-server-communication
+
+  // https://stackoverflow.com/questions/47895748/json-data-is-not-showing-up
+  // https://stackoverflow.com/questions/44779067/json-data-not-showing-in-html/44779141
 
   public loginStatus: string;
   public email: string;
@@ -229,6 +249,33 @@ export class AjaxComponent implements OnInit {
       let obj: RandomObj = JSON.parse(JSON.stringify(data));
       this.loginStatus = obj.msg;
     })
+  }
+
+  onClickSubmit2() {
+    // TODO: Use EventEmitter with form value
+    // alert(this.profileForm.value.colors.color);
+    // alert(this.profileForm.get('firstName')!.value);
+    // alert(this.profileForm.firstName.value);
+
+    // alert(formData.getAll('name'));
+
+    // this.http.post<any>('/submitCategories', {
+    //   // myfirstname:  this.profileForm.value.firstName,
+    //   // colorchoice:  this.profileForm.value.colors.color,
+    //
+    //   eventCategory: this.catgeoryForm.value.eventCategories.eventCategory,
+    //   eventDescription: this.catgeoryForm.value.eventDescription,
+    //   clubCategory: this.catgeoryForm.value.clubCategories.clubCategory,
+    //   clubDescription: this.catgeoryForm.value.clubDescription
+    //
+    //   // eventCategory: this.eventCategory,
+    //   // eventDescription: mi.eventDescription,
+    //   // clubCategory: this.clubCategory,
+    //   // clubDescription: mi.clubDescription
+    // })
+    // .subscribe((data)  => { console.log(data); }, (err) => {
+    //   console.log("Error", err);
+    // });
   }
 
   makeid(length: number): string {

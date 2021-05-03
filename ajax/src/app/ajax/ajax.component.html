@@ -123,3 +123,61 @@
 <p>
   Form Status: {{ profileForm.status }}
 </p>
+
+
+
+<form [formGroup]="catgeoryForm" (ngSubmit)="onClickSubmit2()">
+    <h2 class="form-title">Event/Club Categories</h2>
+    <br />
+    <label>Event Categories:</label>
+    <div class="categories" aria-labelledby="eventCategories" formGroupName="eventCategories">
+        <!--<label class="btn btn-orange">
+        <input type="radio" name="options" id="option1" checked> General Body Meeting (GBM)
+    </label>-->
+      <label for="gbm" id="gbm" class="btn btn-secondary btns btn-orange btn-category">
+          <input id="gbm" type="radio" class="btns btn-orange" autocomplete="off" value="gbm" formControlName="eventCategory">
+          General Body Meeting (GBM)
+      </label>
+      <label for="casual" id="casual" class="btn btn-secondary btns btn-orange btn-category">
+          <input id="casual" type="radio" class="btns btn-orange btn-category" autocomplete="off" value="casual" formControlName="eventCategory">
+          Casual
+      </label>
+      <label for="movie" id="movie" class="btn btn-secondary btns btn-orange btn-category">
+          <input id="movie" type="radio" class="btns btn-orange" autocomplete="off" value="movie" formControlName="eventCategory">
+          Movie Showing
+      </label>
+      <label for="games" id="games" class="btn btn-secondary btns btn-orange btn-category">
+          <input id="games" type="radio" class="btns btn-orange" autocomplete="off" value="games" formControlName="eventCategory">
+          Games/Trivia
+      </label>
+      <label for="info" id="info" class="btn btn-secondary btns btn-orange btn-category">
+          <input id="info" type="radio" class="btns btn-orange" autocomplete="off" value="info" formControlName="eventCategory">
+          Informational
+      </label>
+      <label for="excursion" id="excursion" class="btn btn-secondary btns btn-orange btn-category">
+          <input id="excursion" type="radio" class="btns btn-orange" autocomplete="off" value="excursion" formControlName="eventCategory">
+          Excursion
+      </label>
+      <label for="elections" id="elections" class="btn btn-secondary btns btn-orange btn-category">
+          <input id="elections" type="radio" class="btns btn-orange" autocomplete="off" value="elections" formControlName="eventCategory">
+          Elections
+      </label>
+      <label for="workshop" id="workshop" class="btn btn-secondary btns btn-orange btn-category">
+          <input id="workshop" type="radio" class="btns btn-orange" autocomplete="off" value="workshop" formControlName="eventCategory">
+          Workshop
+      </label>
+      <label for="recruit" id="recruit" class="btn btn-secondary btns btn-orange btn-category">
+          <input id="recruit" type="radio" class="btns btn-orange" autocomplete="off" value="recruit" formControlName="eventCategory">
+          Recruiting (Company)
+      </label>
+      <label for="other" id="other" class="btn btn-secondary btns btn-orange btn-category">
+          <input id="other" type="radio" class="btns btn-orange" autocomplete="off" value="other" formControlName="eventCategory">
+          Other
+      </label>
+    </div>
+
+    <input class="btn-save" type="submit" value="Save" />
+    <!-- <button type="submit" [disabled]="!profileForm.valid">Submit</button> -->
+</form>
+
+<p>{{catgeoryForm.value | json}}</p>

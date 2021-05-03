@@ -63,7 +63,7 @@ function AjaxComponent_div_49_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "label");
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, " Alias: ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](3, "input", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](3, "input", 45);
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -93,6 +93,20 @@ class AjaxComponent {
             aliases: this.fb.array([
                 this.fb.control('')
             ])
+        });
+        this.catgeoryForm = this.fb.group({
+            eventDescription: [''],
+            clubDescription: [''],
+            eventCategories: this.fb.group({
+                eventCategory: ['']
+            }),
+            clubCategories: this.fb.group({
+                clubCategory: ['']
+            })
+            // aliases
+            // aliases: this.fb.array([
+            //   this.fb.control('')
+            // ])
         });
         this.loginStatus = "";
         this.email = "";
@@ -222,6 +236,30 @@ class AjaxComponent {
             this.loginStatus = obj.msg;
         });
     }
+    onClickSubmit2() {
+        // TODO: Use EventEmitter with form value
+        // alert(this.profileForm.value.colors.color);
+        // alert(this.profileForm.get('firstName')!.value);
+        // alert(this.profileForm.firstName.value);
+        // alert(formData.getAll('name'));
+        // this.http.post<any>('/submitCategories', {
+        //   // myfirstname:  this.profileForm.value.firstName,
+        //   // colorchoice:  this.profileForm.value.colors.color,
+        //
+        //   eventCategory: this.catgeoryForm.value.eventCategories.eventCategory,
+        //   eventDescription: this.catgeoryForm.value.eventDescription,
+        //   clubCategory: this.catgeoryForm.value.clubCategories.clubCategory,
+        //   clubDescription: this.catgeoryForm.value.clubDescription
+        //
+        //   // eventCategory: this.eventCategory,
+        //   // eventDescription: mi.eventDescription,
+        //   // clubCategory: this.clubCategory,
+        //   // clubDescription: mi.clubDescription
+        // })
+        // .subscribe((data)  => { console.log(data); }, (err) => {
+        //   console.log("Error", err);
+        // });
+    }
     makeid(length) {
         let result = [];
         let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!&%$#@*^';
@@ -234,7 +272,7 @@ class AjaxComponent {
     }
 }
 AjaxComponent.ɵfac = function AjaxComponent_Factory(t) { return new (t || AjaxComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormBuilder"])); };
-AjaxComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: AjaxComponent, selectors: [["app-ajax"]], decls: 60, vars: 11, consts: [[3, "ngSubmit"], ["userlogin", "ngForm"], ["type", "text", "name", "emailid", "placeholder", "emailid", "ngModel", ""], ["type", "password", "name", "passwd", "placeholder", "passwd", "ngModel", ""], ["type", "submit", "value", "submit"], [3, "innerHTML"], [3, "formGroup", "ngSubmit"], ["type", "text", "formControlName", "firstName"], ["type", "text", "formControlName", "lastName"], ["formGroupName", "address"], ["type", "text", "formControlName", "street"], ["type", "text", "formControlName", "city"], ["type", "text", "formControlName", "state"], ["type", "text", "formControlName", "zip"], ["formGroupName", "colors"], ["type", "radio", "value", "red", "formControlName", "color"], ["type", "radio", "value", "green", "formControlName", "color"], ["type", "radio", "value", "blue", "formControlName", "color"], ["formArrayName", "aliases"], [3, "click"], [4, "ngFor", "ngForOf"], ["type", "submit", 3, "disabled"], ["type", "text", 3, "formControlName"]], template: function AjaxComponent_Template(rf, ctx) { if (rf & 1) {
+AjaxComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: AjaxComponent, selectors: [["app-ajax"]], decls: 101, vars: 15, consts: [[3, "ngSubmit"], ["userlogin", "ngForm"], ["type", "text", "name", "emailid", "placeholder", "emailid", "ngModel", ""], ["type", "password", "name", "passwd", "placeholder", "passwd", "ngModel", ""], ["type", "submit", "value", "submit"], [3, "innerHTML"], [3, "formGroup", "ngSubmit"], ["type", "text", "formControlName", "firstName"], ["type", "text", "formControlName", "lastName"], ["formGroupName", "address"], ["type", "text", "formControlName", "street"], ["type", "text", "formControlName", "city"], ["type", "text", "formControlName", "state"], ["type", "text", "formControlName", "zip"], ["formGroupName", "colors"], ["type", "radio", "value", "red", "formControlName", "color"], ["type", "radio", "value", "green", "formControlName", "color"], ["type", "radio", "value", "blue", "formControlName", "color"], ["formArrayName", "aliases"], [3, "click"], [4, "ngFor", "ngForOf"], ["type", "submit", 3, "disabled"], [1, "form-title"], ["aria-labelledby", "eventCategories", "formGroupName", "eventCategories", 1, "categories"], ["for", "gbm", "id", "gbm", 1, "btn", "btn-secondary", "btns", "btn-orange", "btn-category"], ["id", "gbm", "type", "radio", "autocomplete", "off", "value", "gbm", "formControlName", "eventCategory", 1, "btns", "btn-orange"], ["for", "casual", "id", "casual", 1, "btn", "btn-secondary", "btns", "btn-orange", "btn-category"], ["id", "casual", "type", "radio", "autocomplete", "off", "value", "casual", "formControlName", "eventCategory", 1, "btns", "btn-orange", "btn-category"], ["for", "movie", "id", "movie", 1, "btn", "btn-secondary", "btns", "btn-orange", "btn-category"], ["id", "movie", "type", "radio", "autocomplete", "off", "value", "movie", "formControlName", "eventCategory", 1, "btns", "btn-orange"], ["for", "games", "id", "games", 1, "btn", "btn-secondary", "btns", "btn-orange", "btn-category"], ["id", "games", "type", "radio", "autocomplete", "off", "value", "games", "formControlName", "eventCategory", 1, "btns", "btn-orange"], ["for", "info", "id", "info", 1, "btn", "btn-secondary", "btns", "btn-orange", "btn-category"], ["id", "info", "type", "radio", "autocomplete", "off", "value", "info", "formControlName", "eventCategory", 1, "btns", "btn-orange"], ["for", "excursion", "id", "excursion", 1, "btn", "btn-secondary", "btns", "btn-orange", "btn-category"], ["id", "excursion", "type", "radio", "autocomplete", "off", "value", "excursion", "formControlName", "eventCategory", 1, "btns", "btn-orange"], ["for", "elections", "id", "elections", 1, "btn", "btn-secondary", "btns", "btn-orange", "btn-category"], ["id", "elections", "type", "radio", "autocomplete", "off", "value", "elections", "formControlName", "eventCategory", 1, "btns", "btn-orange"], ["for", "workshop", "id", "workshop", 1, "btn", "btn-secondary", "btns", "btn-orange", "btn-category"], ["id", "workshop", "type", "radio", "autocomplete", "off", "value", "workshop", "formControlName", "eventCategory", 1, "btns", "btn-orange"], ["for", "recruit", "id", "recruit", 1, "btn", "btn-secondary", "btns", "btn-orange", "btn-category"], ["id", "recruit", "type", "radio", "autocomplete", "off", "value", "recruit", "formControlName", "eventCategory", 1, "btns", "btn-orange"], ["for", "other", "id", "other", 1, "btn", "btn-secondary", "btns", "btn-orange", "btn-category"], ["id", "other", "type", "radio", "autocomplete", "off", "value", "other", "formControlName", "eventCategory", 1, "btns", "btn-orange"], ["type", "submit", "value", "Save", 1, "btn-save"], ["type", "text", 3, "formControlName"]], template: function AjaxComponent_Template(rf, ctx) { if (rf & 1) {
         const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "form", 0, 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngSubmit", function AjaxComponent_Template_form_ngSubmit_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r4); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵreference"](1); return ctx.onClickSubmit(_r0.value); });
@@ -322,6 +360,63 @@ AjaxComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](58, "p");
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](59);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](60, "form", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("ngSubmit", function AjaxComponent_Template_form_ngSubmit_60_listener() { return ctx.onClickSubmit2(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](61, "h2", 22);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](62, "Event/Club Categories");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](63, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](64, "label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](65, "Event Categories:");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](66, "div", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](67, "label", 24);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](68, "input", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](69, " General Body Meeting (GBM) ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](70, "label", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](71, "input", 27);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](72, " Casual ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](73, "label", 28);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](74, "input", 29);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](75, " Movie Showing ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](76, "label", 30);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](77, "input", 31);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](78, " Games/Trivia ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](79, "label", 32);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](80, "input", 33);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](81, " Informational ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](82, "label", 34);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](83, "input", 35);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](84, " Excursion ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](85, "label", 36);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](86, "input", 37);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](87, " Elections ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](88, "label", 38);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](89, "input", 39);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](90, " Workshop ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](91, "label", 40);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](92, "input", 41);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](93, " Recruiting (Company) ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](94, "label", 42);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](95, "input", 43);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](96, " Other ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](97, "input", 44);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](98, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](99);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipe"](100, "json");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](7);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("innerHTML", ctx.theHtmlString, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵsanitizeHtml"]);
@@ -338,9 +433,13 @@ AjaxComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComp
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("disabled", !ctx.profileForm.valid);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](57, 9, ctx.profileForm.value));
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](57, 11, ctx.profileForm.value));
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate1"](" Form Status: ", ctx.profileForm.status, "\n");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("formGroup", ctx.catgeoryForm);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](39);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵpipeBind1"](100, 13, ctx.catgeoryForm.value));
     } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_0__["ɵangular_packages_forms_forms_ba"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgForm"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["NgModel"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormGroupDirective"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormControlName"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormGroupName"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["RadioControlValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_0__["FormArrayName"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"]], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["JsonPipe"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhamF4LmNvbXBvbmVudC5jc3MifQ== */"] });
 
 
