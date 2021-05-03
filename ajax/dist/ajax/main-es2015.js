@@ -128,7 +128,7 @@ class AjaxComponent {
     // }
     onSubmit() {
         // TODO: Use EventEmitter with form value
-        // alert(this.profileForm.value.firstName);
+        // alert(this.profileForm.value.colors.color);
         // alert(this.profileForm.get('firstName')!.value);
         // alert(this.profileForm.firstName.value);
         // console.warn(this.profileForm.value);
@@ -137,7 +137,8 @@ class AjaxComponent {
         formData.append("name", this.profileForm.get('firstName').value);
         alert(formData.getAll('name'));
         this.http.post('/submitCategories', {
-            email: this.profileForm.value.firstName
+            myfirstname: this.profileForm.value.firstName,
+            colorchoice: this.profileForm.value.colors.color
             // fname: this.fname
             // eventCategory:  this.eventCategory,
             // eventDescription:  mi.eventDescription,

@@ -46,7 +46,7 @@ export class AjaxComponent implements OnInit {
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    // alert(this.profileForm.value.firstName);
+    // alert(this.profileForm.value.colors.color);
     // alert(this.profileForm.get('firstName')!.value);
     // alert(this.profileForm.firstName.value);
     // console.warn(this.profileForm.value);
@@ -58,7 +58,8 @@ export class AjaxComponent implements OnInit {
 
     this.http.post<any>('/submitCategories', {
 
-      email:  this.profileForm.value.firstName
+      myfirstname:  this.profileForm.value.firstName,
+      colorchoice:  this.profileForm.value.colors.color
 
       // fname: this.fname
       // eventCategory:  this.eventCategory,
@@ -142,6 +143,10 @@ export class AjaxComponent implements OnInit {
   // https://developer.mozilla.org/en-US/docs/Web/API/FormData/getAll
   // https://www.tutorialspoint.com/expressjs/expressjs_form_data.htm
   // https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
+  // https://stackoverflow.com/questions/16104078/appending-array-to-formdata-and-send-via-ajax
+  // https://angular.io/tutorial/toh-pt6
+  // https://stackoverflow.com/questions/34475523/how-to-pass-url-arguments-query-string-to-a-http-request-on-angular
+  // https://angular.io/guide/http#setup-for-server-communication
 
   public loginStatus: string;
   public email: string;
